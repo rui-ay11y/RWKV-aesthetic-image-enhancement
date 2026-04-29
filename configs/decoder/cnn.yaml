@@ -1,0 +1,6 @@
+# CNN Decoder — PixelShuffle upsampling, multi-scale img skip, residual mode
+_target_: src.models.decoders.cnn_decoder.CNNDecoder
+num_upsample_blocks: 4
+base_channels: 128
+residual_scale: 0.5
+img_proj_channels: 3

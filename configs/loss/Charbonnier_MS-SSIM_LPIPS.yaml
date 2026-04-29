@@ -1,0 +1,16 @@
+﻿# Charbonnier + MS-SSIM + LPIPS composite loss
+# usage: python scripts/train.py loss=Charbonnier_MS-SSIM_LPIPS
+_target_: src.losses.charbonnier_ms_ssim_lpips_loss.CharbonnierMSSSIMLPIPSLoss
+
+charbonnier_weight: 1.0
+ms_ssim_weight: 0.2
+lpips_weight: 0.03
+delta_e_lab_weight: 0.1
+
+charbonnier_eps: 1.0e-3
+ms_ssim_levels: 5
+ms_ssim_window_size: 11
+ms_ssim_sigma: 1.5
+
+lpips_net: "alex"
+lpips_pretrained: true

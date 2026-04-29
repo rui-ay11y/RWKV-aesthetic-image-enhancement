@@ -1,0 +1,28 @@
+# MIT-Adobe FiveK dataset
+# Set DATA_DIR env var or use default archive path
+_target_: src.data.fivek_dataset.FiveKDataModule
+data_dir: "${oc.env:DATA_DIR,D:/USYD/usyd-26s1/5703_capstone/datasets/archive}"
+expert: "C"
+# Flexible split ratios. Defaults to train / val / test = 80 / 10 / 10.
+train_ratio: 0.8
+val_ratio: 0.1
+test_ratio: 0.1
+# Legacy caps kept for backward compatibility when callers still pass them.
+train_split: null
+val_split: null
+test_split: null
+# Preferred subset-size knobs for quick experiments, e.g.:
+#   data.train_subset_size=2000
+#   data.val_subset_size=100
+#   data.test_subset_size=100
+train_subset_size: null
+val_subset_size: null
+test_subset_size: null
+image_size: 480
+crop_size: 256  # [MOD] Align to DINOv3 patch_size=16 to avoid token-grid truncation
+normalize_to_neg_one_one: true
+overfit_on_train_subset: false
+use_augmentation: true
+num_workers: 4
+batch_size: 8
+pin_memory: true

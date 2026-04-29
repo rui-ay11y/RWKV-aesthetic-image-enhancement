@@ -1,0 +1,12 @@
+defaults:
+  - base
+  - encoder: dinov3_b
+  - bottleneck: rwkv
+  - decoder: cnn
+  - loss: stage1
+  - data: fivek
+  - optional ablation: null
+  - _self_
+
+experiment_name: "dino_cnn_cnn"
+seed: 42

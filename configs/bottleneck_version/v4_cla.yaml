@@ -1,0 +1,12 @@
+# V4: + Color-Luma Alignment (CLA) module
+# Problem solved: Separate luma/chroma processing causes color distortion
+# Source: DRWKV Bi-SAB (WACV 2026)
+bottleneck:
+  _target_: src.models.bottlenecks.versions.v4_cla.RWKVBottleneckV4
+  hidden_dim: 384
+  num_layers: 6
+  drop_rate: 0.1
+  hsv_sort_key: "hue"
+  fine_scale: 1
+  coarse_scale: 4
+  cla_num_heads: 4

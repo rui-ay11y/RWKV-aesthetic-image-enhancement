@@ -1,0 +1,11 @@
+# B-3 ★: RWKV bottleneck (core method, O(N))
+_target_: src.models.bottlenecks.rwkv_bottleneck.RWKVBottleneckV1
+hidden_dim: 512
+num_layers: 4
+drop_rate: 0.0
+enable_bidirectional_scan: false
+enable_row_column_scan: false
+enable_2d_adapter: false
+adapter_kernel_size: 3
+adapter_alpha_init: 0.0
+

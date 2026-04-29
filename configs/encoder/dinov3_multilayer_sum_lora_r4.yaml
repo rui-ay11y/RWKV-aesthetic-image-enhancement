@@ -1,0 +1,16 @@
+# E2: DINOv3 multi-layer fusion encoder + LoRA (rank 4)
+_target_: src.models.encoders.dinov3_multilayer.DINOv3MultiLayerEncoder
+model_name: "facebook/dinov3-vitb16-pretrain-lvd1689m"
+patch_size: 16
+embed_dim: 768
+layer_ids: [3, 6, 9, 11]
+fusion_mode: "sum"
+local_files_only: false
+anchor_last_layer: true
+residual_scale_init: 0.0
+use_output_norm: false
+enable_lora: true
+lora_rank: 4
+lora_alpha: 4.0
+lora_target_layers: [8, 9, 10, 11]
+lora_target_modules: ["q_proj", "v_proj"]

@@ -1,0 +1,6 @@
+# E-4: DINOv3 ViT-B
+_target_: src.models.encoders.dinov3.DINOv3Encoder
+model_name: "facebook/dinov3-vitb16-pretrain-lvd1689m"
+frozen: true
+patch_size: 16
+embed_dim: 768

@@ -1,0 +1,7 @@
+# E-2: DINOv2-B (default encoder)
+_target_: src.models.encoders.dinov2.DINOv2Encoder
+name: "vit_base_patch14_dinov2"
+pretrained: true
+frozen: true
+patch_size: 14
+embed_dim: 768

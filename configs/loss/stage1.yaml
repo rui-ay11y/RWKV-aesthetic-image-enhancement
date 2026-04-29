@@ -1,0 +1,17 @@
+# Stage 1 loss: pixel-level fitting (no aesthetic score)
+_target_: src.losses.combined_loss.CombinedLoss
+components:
+  l1:
+    _target_: src.losses.l1_loss.L1Loss
+    weight: 1.0
+  ssim:
+    _target_: src.losses.ssim_loss.SSIMLoss
+    weight: 0.1
+    window_size: 11
+  perceptual:
+    _target_: src.losses.perceptual_loss.PerceptualLoss
+    weight: 0.01
+    layers:
+      - "relu1_2"
+      - "relu2_2"
+      - "relu3_3"

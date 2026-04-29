@@ -1,0 +1,6 @@
+# B-1: CNN bottleneck (local modeling baseline, O(K²N))
+_target_: src.models.bottlenecks.cnn_bottleneck.CNNBottleneck
+hidden_dim: 384
+num_layers: 4
+kernel_size: 3
+drop_rate: 0.1

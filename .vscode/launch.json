@@ -1,0 +1,302 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "A Train (RWKV, full)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_pipeline.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "python": "E:\\Anaconda\\python.exe",
+      "env": {
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPATH": "${workspaceFolder}",
+        "HF_HOME": "E:\\torch\\.cache\\huggingface",
+        "XDG_CACHE_HOME": "E:\\torch\\.cache",
+        "CUDA_VISIBLE_DEVICES": "0",
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+      },
+      "args": [
+        "--stage",
+        "train",
+        "--device",
+        "cuda",
+        "--experiment-name",
+        "final_rwkv_2k"
+      ]
+    },
+    {
+      "name": "A Train (quick sanity)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_pipeline.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "python": "E:\\Anaconda\\python.exe",
+      "env": {
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPATH": "${workspaceFolder}",
+        "HF_HOME": "E:\\torch\\.cache\\huggingface",
+        "XDG_CACHE_HOME": "E:\\torch\\.cache",
+        "CUDA_VISIBLE_DEVICES": "0",
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+      },
+      "args": [
+        "--stage",
+        "train",
+        "--quick",
+        "--device",
+        "cuda",
+        "--experiment-name",
+        "debug_rwkv"
+      ]
+    },
+    {
+      "name": "B Evaluate (latest checkpoint)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_pipeline.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "python": "E:\\Anaconda\\python.exe",
+      "env": {
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPATH": "${workspaceFolder}",
+        "HF_HOME": "E:\\torch\\.cache\\huggingface",
+        "XDG_CACHE_HOME": "E:\\torch\\.cache",
+        "CUDA_VISIBLE_DEVICES": "0",
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+      },
+      "args": [
+        "--stage",
+        "evaluate",
+        "--device",
+        "cuda",
+        "--experiment-name",
+        "final_rwkv_2k"
+      ]
+    },
+    {
+      "name": "C Generate Comparison",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_pipeline.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "python": "E:\\Anaconda\\python.exe",
+      "env": {
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPATH": "${workspaceFolder}",
+        "HF_HOME": "E:\\torch\\.cache\\huggingface",
+        "XDG_CACHE_HOME": "E:\\torch\\.cache",
+        "CUDA_VISIBLE_DEVICES": "0",
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+      },
+      "args": [
+        "--stage",
+        "compare",
+        "--device",
+        "cuda",
+        "--experiment-name",
+        "final_rwkv_2k",
+        "--num-batches",
+        "10",
+        "--num-samples",
+        "8"
+      ]
+    },
+    {
+      "name": "D Export Results",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_pipeline.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "python": "E:\\Anaconda\\python.exe",
+      "env": {
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPATH": "${workspaceFolder}",
+        "HF_HOME": "E:\\torch\\.cache\\huggingface",
+        "XDG_CACHE_HOME": "E:\\torch\\.cache",
+        "CUDA_VISIBLE_DEVICES": "0",
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+      },
+      "args": [
+        "--stage",
+        "export",
+        "--device",
+        "cuda",
+        "--experiment-name",
+        "final_rwkv_2k"
+      ]
+    },
+    {
+      "name": "ABCD Full Pipeline",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_pipeline.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "python": "E:\\Anaconda\\python.exe",
+      "env": {
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPATH": "${workspaceFolder}",
+        "HF_HOME": "E:\\torch\\.cache\\huggingface",
+        "XDG_CACHE_HOME": "E:\\torch\\.cache",
+        "CUDA_VISIBLE_DEVICES": "0",
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+      },
+      "args": [
+        "--stage",
+        "all",
+        "--device",
+        "cuda",
+        "--experiment-name",
+        "final_rwkv_2k",
+        "--num-batches",
+        "10",
+        "--num-samples",
+        "8"
+      ]
+    },
+    {
+      "name": "Train (Hydra, DINOv3 + RWKV + Stage1 loss)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/train.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "python": "E:\\Anaconda\\python.exe",
+      "env": {
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPATH": "${workspaceFolder}",
+        "HF_HOME": "E:\\torch\\.cache\\huggingface",
+        "XDG_CACHE_HOME": "E:\\torch\\.cache",
+        "CUDA_VISIBLE_DEVICES": "0",
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+      },
+      "args": [
+        "experiment_name=${input:expName}",
+        "data.data_dir=${input:dataDir}",
+        "encoder=dinov3_b",
+        "bottleneck=rwkv",
+        "loss=stage1",
+        "loss.components.l1.weight=${input:l1Weight}",
+        "loss.components.ssim.weight=${input:ssimWeight}",
+        "loss.components.perceptual.weight=${input:perceptualWeight}",
+        "data.overfit_on_train_subset=${input:overfitOnTrain}",
+        "data.train_subset_size=${input:trainSubsetSize}",
+        "training.require_gpu=true"
+      ]
+    },
+    {
+      "name": "Train (Hydra, DINOv3 + RWKV + Charbonnier_MS-SSIM_LPIPS)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/train.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "python": "E:\\Anaconda\\python.exe",
+      "env": {
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPATH": "${workspaceFolder}",
+        "HF_HOME": "E:\\torch\\.cache\\huggingface",
+        "XDG_CACHE_HOME": "E:\\torch\\.cache",
+        "CUDA_VISIBLE_DEVICES": "0",
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+      },
+      "args": [
+        "experiment_name=${input:expName}",
+        "data.data_dir=${input:dataDir}",
+        "encoder=dinov3_b",
+        "bottleneck=rwkv",
+        "loss=Charbonnier_MS-SSIM_LPIPS",
+        "loss.charbonnier_weight=${input:charbonnierWeight}",
+        "loss.ms_ssim_weight=${input:msssimWeight}",
+        "loss.lpips_weight=${input:lpipsWeight}",
+        "loss.delta_e_lab_weight=${input:deltaEWeight}",
+        "data.overfit_on_train_subset=${input:overfitOnTrain}",
+        "data.train_subset_size=${input:trainSubsetSize}",
+        "training.require_gpu=true"
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "dataDir",
+      "type": "pickString",
+      "description": "Choose dataset root (must contain raw/, c/, splits/)",
+      "options": [
+        "D:/USYD/usyd-26s1/5703_capstone/datasets/archive",
+        "D:/USYD/usyd-26s1/5703_capstone/datasets/archive/subsets/fivek_c_20",
+        "D:/USYD/usyd-26s1/5703_capstone/datasets/archive/subsets/fivek_c_200"
+      ],
+      "default": "D:/USYD/usyd-26s1/5703_capstone/datasets/archive/subsets/fivek_c_200"
+    },
+    {
+      "id": "expName",
+      "type": "promptString",
+      "description": "Experiment name",
+      "default": "rwkv_switch_run"
+    },
+    {
+      "id": "overfitOnTrain",
+      "type": "pickString",
+      "description": "Use the same train subset for train/val/test",
+      "options": [
+        "false",
+        "true"
+      ],
+      "default": "false"
+    },
+    {
+      "id": "trainSubsetSize",
+      "type": "promptString",
+      "description": "Train subset size (null = full train split)",
+      "default": "null"
+    },
+    {
+      "id": "l1Weight",
+      "type": "promptString",
+      "description": "Stage1 L1 weight",
+      "default": "1.0"
+    },
+    {
+      "id": "ssimWeight",
+      "type": "promptString",
+      "description": "Stage1 SSIM weight",
+      "default": "0.1"
+    },
+    {
+      "id": "perceptualWeight",
+      "type": "promptString",
+      "description": "Stage1 Perceptual weight",
+      "default": "0.01"
+    },
+    {
+      "id": "charbonnierWeight",
+      "type": "promptString",
+      "description": "Charbonnier weight",
+      "default": "1.0"
+    },
+    {
+      "id": "msssimWeight",
+      "type": "promptString",
+      "description": "MS-SSIM weight",
+      "default": "0.2"
+    },
+    {
+      "id": "lpipsWeight",
+      "type": "promptString",
+      "description": "LPIPS weight",
+      "default": "0.03"
+    },
+    {
+      "id": "deltaEWeight",
+      "type": "promptString",
+      "description": "DeltaE-Lab weight",
+      "default": "0.1"
+    }
+  ]
+}
